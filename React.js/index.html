@@ -13,13 +13,34 @@
 <script src = ""></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    function App () {
-        const [counter, modifier] = React.useState();
-        const onClick = () => {
-            modifier(counter + 1);
+    function App() {
+        const [minutes, setMinutes] = React.useState(); // useState는 array를 제공, 그 첫 번째 element가 현재의 값(minutes). 두 번째 element는 첫 번째 element를 수정하는 modifier 함수(setMinutes)
+        const onChange = (event) => {
+            setMinutes(event.target.value); // 데이터를 업데이트 하는 방법은 setState // setMinutes 활용하기
         }
+        return (
+            <div>
+                <h1 className="hi">Super Converter</h1> 
+                <label htmlFor="minuts">Minuts</label>
+                <input 
+                value={minutes} // 사용자의 입력 값
+                id="minutes" 
+                placeholder="Minutes" 
+                type="number" 
+                onChange={onChange} // 입력 값 update
+                />
+                <label htmlFor="hours">Hours</label>
+                <input id="hours" placeholder="Hours" type="number" />
+            </div>
+        ); 
+        // labe은 input 옆에 글씨를 써주는 HTML 태그
+        // label을 input에 연결시키기 위해 html에서는 for/id 속성을 이용
+        // js에서는 class -> JSX에서는 className
+        // js에서는 for -> JSX에서는 htmlFor
+        // React JS 기준, 현재 상태에선 input 값(vALUE)은 uncontrolled 로 undefined 와 같은 상태 
+
     }
-    function countUp() {
+    function countUp() { 
         counter += 1;
         render();
     } 
